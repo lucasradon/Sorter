@@ -107,7 +107,7 @@ class Sorter<T extends Comparable> {
     }
 
     /**
-     * Methode zur Sortierung eines Arrays mit Quicksort - Rekursiv
+     * Methode zur Sortierung eines Arrays mit randomisierten Quicksort - Rekursiv
      *
      * @param array zu sortierendes Array
      * @param l     Anfangsindex des Teilintervalls
@@ -120,7 +120,7 @@ class Sorter<T extends Comparable> {
     }
 
     /**
-     * Eigentliches Quick-Sort nach Script
+     * Eigentliches randomisertes Quick-Sort nach Script
      * @param array zu sortierendes Array
      * @param l Anfangsindex des Teilintervalls
      * @param r Endindex des Teilintervalls
