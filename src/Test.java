@@ -32,31 +32,31 @@ public class Test {
         Integer quickSortRandomArray1[] = Permutation.fisher_yates_shuffle(randomArray);
 
 
-        Sorter sorter = new Sorter();
+        Sorter sorter = new Sorter<Integer>();
         System.out.println();
         //---------
         System.out.println("Quicksort");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
-        System.out.println("Quicksort Aufsteigend "+sorter.quicksort(aufsteigendarray.clone(),0,aufsteigendarray.length));
+        System.out.println("Quicksort Aufsteigend "+sorter.quicksort(aufsteigendarray.clone()));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortArray0);
-        System.out.println("Quicksort Absteigend "+sorter.quicksort(quickSortArray0,0,quickSortArray0.length));
+        System.out.println("Quicksort Absteigend "+sorter.quicksort(quickSortArray0));
         showArray(quickSortArray0);
         sorter.reset();
         System.out.println();
         System.out.println("Random 1");
         showArray(quickSortArray1);
-        System.out.println("Quicksort Random 1 "+sorter.quicksort(quickSortArray1,0,quickSortArray1.length));
+        System.out.println("Quicksort Random 1 "+sorter.quicksort(quickSortArray1));
         showArray(quickSortArray1);
         sorter.reset();
         System.out.println();
         System.out.println("Random 2");
         showArray(quickSortArray2);
-        System.out.println("Quicksort Random 2 "+sorter.quicksort(quickSortArray2,0,quickSortArray1.length));
+        System.out.println("Quicksort Random 2 "+sorter.quicksort(quickSortArray2));
         showArray(quickSortArray2);
         sorter.reset();
         System.out.println();
@@ -88,13 +88,13 @@ public class Test {
         System.out.println("QuickSortRandom");
         System.out.println("Aufsteigendes Array");
         showArray(aufsteigendarray);
-        System.out.println("QuickSortRandom Aufsteigend "+sorter.quicksortRandom(aufsteigendarray,0,aufsteigendarray.length));
+        System.out.println("QuickSortRandom Aufsteigend "+sorter.quicksortRandom(aufsteigendarray));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortRandomArray0);
-        System.out.println("QuickSortRandom Absteigend "+sorter.quicksortRandom(quickSortRandomArray0,0,quickSortRandomArray0.length));
+        System.out.println("QuickSortRandom Absteigend "+sorter.quicksortRandom(quickSortRandomArray0));
         showArray(quickSortRandomArray0);
         System.out.println();
         System.out.println("Random");
@@ -103,11 +103,22 @@ public class Test {
         Integer test[] = quickSortRandomArray1.clone();
         for (int i=0; i<100000; i++){
             test = quickSortRandomArray1.clone();
-            zz+=sorter.quicksortRandom(test,0,quickSortRandomArray1.length);
+            zz+=sorter.quicksortRandom(test);
             sorter.reset();
         }
         showArray(test);
         System.out.println("Durchschnittlich "+zz/100000+" Schlüsselvergleiche");
+
+        Sorter<Character> stringSorter = new Sorter<Character>();
+        String mytest = "acbd";
+        Character[] characters = new Character[mytest.length()];
+        char[] charaarray = mytest.toCharArray();
+        for (int i=0; i<mytest.length(); i++){
+            characters[i]= charaarray[i];
+        }
+        System.out.println(stringSorter.quicksort(characters));
+        showArray(characters);
+
 
     }
 
@@ -115,7 +126,7 @@ public class Test {
      * Methode zur Ausgabe des Arrays
      * @param array
      */
-    private static void showArray(Comparable<Integer>[] array){
+    private static void showArray(Comparable[] array){
         for (int i=0; i<array.length; i++) {
             System.out.print(array[i] + " ");
         }

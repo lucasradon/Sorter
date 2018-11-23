@@ -1,4 +1,4 @@
-class Sorter<T extends Comparable> {
+class Sorter<T extends Comparable<T>>{
     /**
      * Zähler Varibale - Schlüssevergleiche
      */
@@ -8,12 +8,10 @@ class Sorter<T extends Comparable> {
      * Methode zur Sortierung eines Arrays mit Quicksort - Rekursiv
      *
      * @param array zu sortierendes Array
-     * @param l     Anfangsindex des Teilintervalls
-     * @param r     Endindex des Teilintervalls
      * @return int Schulüsselvergleiche
      */
-    int quicksort(T[] array, int l, int r) {
-       myquick(array,l,r);
+    int quicksort(T[] array) {
+       myquick(array,0,array.length);
        return z;
     }
 
@@ -110,12 +108,10 @@ class Sorter<T extends Comparable> {
      * Methode zur Sortierung eines Arrays mit randomisierten Quicksort - Rekursiv
      *
      * @param array zu sortierendes Array
-     * @param l     Anfangsindex des Teilintervalls
-     * @param r     Endindex des Teilintervalls
      * @return int Schulüsselvergleiche
      */
-    int quicksortRandom(T[] array, int l, int r) {
-        myquickrandom(array,l,r);
+    int quicksortRandom(T[] array) {
+        myquickrandom(array,0,array.length);
         return z;
     }
 
