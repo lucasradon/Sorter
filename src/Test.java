@@ -109,6 +109,8 @@ public class Test {
         showArray(test);
         System.out.println("Durchschnittlich "+zz/100000+" Schlüsselvergleiche");
 
+        System.out.println();
+        System.out.println("Generics Test mit Char[] und String[]");
         Sorter<Character> charSorter = new Sorter<Character>();
         String mytest = "acbdxkj";
         Character[] characters = new Character[mytest.length()];
@@ -117,21 +119,21 @@ public class Test {
             characters[i]= charaarray[i];
         }
         showArray(characters);
-        System.out.println(charSorter.quicksort(characters));
+        System.out.println("Character[] Quicksort Schlüsselvergleiche: "+charSorter.quicksort(characters));
         showArray(characters);
 
         System.out.println();
         Sorter<String> stringSorter = new Sorter<String>();
         String[] strings = {"Hi","abcd","a","xzsk","b","c"};
         showArray(strings);
-        System.out.println(stringSorter.quicksort(strings));
+        System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quicksort(strings));
         showArray(strings);
 
     }
 
     /**
      * Methode zur Ausgabe des Arrays
-     * @param array
+     * @param array anzuzeigendes Array
      */
     private static void showArray(Comparable[] array){
         for (int i=0; i<array.length; i++) {

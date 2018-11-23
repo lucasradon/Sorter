@@ -22,9 +22,12 @@ class Sorter<T extends Comparable<T>>{
      * @param r Endindex des Teilintervalls
      */
     void myquick(T[] array, int l, int r) {
+        //Großschritt 1.Basisfall
         if (r - l <= 1) {
             return;
         }
+        //Großschritt 2
+        //Pivoindex genau in der Mitte des Teilintervalls
         int pivin = (int) (l + r) / 2;
         T piv = (T) array[pivin];
         int lamda = l, roh = r - 1;
@@ -88,6 +91,11 @@ class Sorter<T extends Comparable<T>>{
         }
     }
 
+    /**
+     * Insertion-Sort
+     * @param array zu sortierendes Array
+     * @return int-Wert Schlüsselvergleiche
+     */
     int insertionsort(T[] array) {
         int z = 0;
         for (int i = 1; i < array.length; i++) {
@@ -189,6 +197,9 @@ class Sorter<T extends Comparable<T>>{
     }
 
 
+    /**
+     * Methode zum Resetten des Zählers
+     */
     void reset() {
         z = 0;
     }
