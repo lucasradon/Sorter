@@ -38,25 +38,25 @@ public class Test {
         System.out.println("Quicksort");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
-        System.out.println("Quicksort Aufsteigend "+sorter.quicksort(aufsteigendarray.clone()));
+        System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quicksort(aufsteigendarray.clone()));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortArray0);
-        System.out.println("Quicksort Absteigend "+sorter.quicksort(quickSortArray0));
+        System.out.println("Quicksort Absteigend Schlüsselvergleiche: "+sorter.quicksort(quickSortArray0));
         showArray(quickSortArray0);
         sorter.reset();
         System.out.println();
         System.out.println("Random 1");
         showArray(quickSortArray1);
-        System.out.println("Quicksort Random 1 "+sorter.quicksort(quickSortArray1));
+        System.out.println("Quicksort Random 1 Schlüsselvergleiche: "+sorter.quicksort(quickSortArray1));
         showArray(quickSortArray1);
         sorter.reset();
         System.out.println();
         System.out.println("Random 2");
         showArray(quickSortArray2);
-        System.out.println("Quicksort Random 2 "+sorter.quicksort(quickSortArray2));
+        System.out.println("Quicksort Random 2 Schlüsselvergleiche: "+sorter.quicksort(quickSortArray2));
         showArray(quickSortArray2);
         sorter.reset();
         System.out.println();
@@ -65,22 +65,22 @@ public class Test {
         System.out.println("Insertionsort");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
-        System.out.println("InsertionsSort Aufsteigend "+sorter.insertionsort(aufsteigendarray));
+        System.out.println("InsertionsSort Aufsteigend Schlüsselvergleiche: "+sorter.insertionsort(aufsteigendarray));
         showArray(aufsteigendarray);
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(insertionSortArray0);
-        System.out.println("InsertionSort Absteigend "+sorter.insertionsort(insertionSortArray0));
+        System.out.println("InsertionSort Absteigend Schlüsselvergleiche: "+sorter.insertionsort(insertionSortArray0));
         showArray(insertionSortArray0);
         System.out.println();
         System.out.println("Random 1");
         showArray(insertionSortArray1);
-        System.out.println("Insertionsort Random 1 "+sorter.insertionsort(insertionSortArray1));
+        System.out.println("Insertionsort Random 1 Schlüsselvergleiche: "+sorter.insertionsort(insertionSortArray1));
         showArray(insertionSortArray1);
         System.out.println();
         System.out.println("Random 2");
         showArray(insertionSortArray2);
-        System.out.println("Insertionsort Random 2 "+sorter.insertionsort(insertionSortArray2));
+        System.out.println("Insertionsort Random 2 Schlüsselvergleiche: "+sorter.insertionsort(insertionSortArray2));
         showArray(insertionSortArray2);
         System.out.println();
         System.out.println();
@@ -88,13 +88,13 @@ public class Test {
         System.out.println("QuickSortRandom");
         System.out.println("Aufsteigendes Array");
         showArray(aufsteigendarray);
-        System.out.println("QuickSortRandom Aufsteigend "+sorter.quicksortRandom(aufsteigendarray));
+        System.out.println("QuickSortRandom Aufsteigend Schlüsselvergleiche: "+sorter.quicksortRandom(aufsteigendarray));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortRandomArray0);
-        System.out.println("QuickSortRandom Absteigend "+sorter.quicksortRandom(quickSortRandomArray0));
+        System.out.println("QuickSortRandom Absteigend Schlüsselvergleiche: "+sorter.quicksortRandom(quickSortRandomArray0));
         showArray(quickSortRandomArray0);
         System.out.println();
         System.out.println("Random");
@@ -109,16 +109,23 @@ public class Test {
         showArray(test);
         System.out.println("Durchschnittlich "+zz/100000+" Schlüsselvergleiche");
 
-        Sorter<Character> stringSorter = new Sorter<Character>();
-        String mytest = "acbd";
+        Sorter<Character> charSorter = new Sorter<Character>();
+        String mytest = "acbdxkj";
         Character[] characters = new Character[mytest.length()];
         char[] charaarray = mytest.toCharArray();
         for (int i=0; i<mytest.length(); i++){
             characters[i]= charaarray[i];
         }
-        System.out.println(stringSorter.quicksort(characters));
+        showArray(characters);
+        System.out.println(charSorter.quicksort(characters));
         showArray(characters);
 
+        System.out.println();
+        Sorter<String> stringSorter = new Sorter<String>();
+        String[] strings = {"Hi","abcd","a","xzsk","b","c"};
+        showArray(strings);
+        System.out.println(stringSorter.quicksort(strings));
+        showArray(strings);
 
     }
 
