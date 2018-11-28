@@ -38,7 +38,7 @@ public class Test {
         System.out.println("====Quicksort====");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
-        System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quicksort(aufsteigendarray.clone()));
+        //System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quicksort(aufsteigendarray.clone()));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
@@ -130,11 +130,18 @@ public class Test {
         showArray(strings);
         System.out.println();
         System.out.println("=====Heapsort=====");
-        Comparable[] A = {0,1,0,0,1,1,1,0,0,1};
+        Integer[] A = {0,1,0,0,1,1,1,0,0,1};
+        Integer[] B = A.clone();
         showArray(A);
         sorter.reset();
-        System.out.println(sorter.heapsort(A));
+        System.out.println("Heapsort: "+sorter.heapsort(A));
         showArray(A);
+        System.out.println();
+        showArray(B);
+        sorter.reset();
+        System.out.println("Quciksort: "+sorter.quicksort(B));
+        showArray(B);
+        sorter.reset();
         System.out.println();
         System.out.println("====Simple und Extendedkeys====");
 
@@ -143,6 +150,7 @@ public class Test {
                 new SimpleKey(1,9),new SimpleKey(1,6),new SimpleKey(0,4),
                 new SimpleKey(0,2),new SimpleKey(1,8)};
         SimpleKey[] simpleKeys1 = simpleKeys.clone();
+        SimpleKey[] simpleKeys2 = simpleKeys.clone();
         ExtendedKey[] extendedKeys = new ExtendedKey[10];
 
         Sorter<SimpleKey> simpleKeySorter = new Sorter<>();
@@ -151,8 +159,14 @@ public class Test {
         System.out.println("Quicksort: "+simpleKeySorter.quicksort(simpleKeys));
         showArray(simpleKeys);
         System.out.println();
+        simpleKeySorter.reset();
         showArray(simpleKeys1);
         System.out.println("Heapsort: "+simpleKeySorter.heapsort(simpleKeys1));
+        showArray(simpleKeys1);
+        System.out.println();
+        simpleKeySorter.reset();
+        showArray(simpleKeys1);
+        System.out.println("InsertionSort: "+simpleKeySorter.insertionsort(simpleKeys1));
         showArray(simpleKeys1);
     }
 

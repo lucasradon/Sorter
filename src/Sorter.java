@@ -29,23 +29,27 @@ class Sorter<T extends Comparable<T>> {
         }
         //Großschritt 2
         //Pivoindex genau in der Mitte des Teilintervalls
-        int pivin = (int) (l + r) / 2;
-        T piv = (T) array[pivin];
+        int pivin = (l + r) / 2;
+        T piv = array[pivin];
         int lamda = l, roh = r - 1;
         int lamdalamda, rohroh;
 
-        while (roh - lamda != 0) {
-            int i = lamda - 1;
-            int j = roh + 1;
-            do {
+        while (roh - lamda !=0) {
+            int i = lamda;
+            int j = roh;
+
+            z++;
+            while (array[i].compareTo(piv) < 0){
+                z++;
                 i++;
+            }
+
+            z++;
+            while (array[j].compareTo(piv) > 0){
                 z++;
-            } while (array[i].compareTo(piv) < 0);
-            lamdalamda = i;
-            do {
                 j--;
-                z++;
-            } while (array[j].compareTo(piv) > 0);
+            }
+            lamdalamda = i;
             rohroh = j;
 
             //Großschritt 2.2
@@ -60,13 +64,16 @@ class Sorter<T extends Comparable<T>> {
             if (lamdalamda < pivin && pivin < rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh - 1;
-            } else if (lamdalamda == pivin && pivin < rohroh) {
+            }
+            if (lamdalamda == pivin && pivin < rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh - 1;
-            } else if (lamdalamda < pivin && pivin == rohroh) {
+            }
+            if (lamdalamda < pivin && pivin == rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh;
-            } else if (lamdalamda == pivin && pivin == rohroh) {
+            }
+            if (lamdalamda == pivin && pivin == rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
@@ -198,7 +205,10 @@ class Sorter<T extends Comparable<T>> {
         if (A.length <= 1)
             return z;
         //Buildheap
-        reheap(A, 0, A.length);
+        int n = A.length;
+        for (int j=(n/2)-1; j>=0; j--){
+            reheap(A, j, n);
+        }
         //Großschritt 2
         int heapsize = A.length;
         while (heapsize >= 2) {
@@ -219,13 +229,15 @@ class Sorter<T extends Comparable<T>> {
         }
         //1.2 Berechnng des maximalen Sohns
         int maxson;
-        z++;
         if (2 * from + 1 == to - 1) {
             maxson = 2 * from + 1;
-        } else if (A[(2 * from) + 1].compareTo(A[2 * from + 2]) > 0) {
-            maxson = 2 * from + 1;
-        } else
-            maxson = 2 * from + 2;
+        } else {
+            z++;
+            if (A[(2 * from) + 1].compareTo(A[2 * from + 2]) > 0) {
+                maxson = 2 * from + 1;
+            } else
+                maxson = 2 * from + 2;
+        }
         //1.3
         z++;
         if (A[from].compareTo(A[maxson]) >= 0) {
