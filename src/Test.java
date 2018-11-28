@@ -32,7 +32,7 @@ public class Test {
         Integer quickSortRandomArray1[] = Permutation.fisher_yates_shuffle(randomArray);
 
 
-        Sorter sorter = new Sorter<Integer>();
+        Sorter<Integer> sorter = new Sorter<Integer>();
         System.out.println();
         //---------
         System.out.println("====Quicksort====");
@@ -130,12 +130,30 @@ public class Test {
         showArray(strings);
         System.out.println();
         System.out.println("=====Heapsort=====");
-        Comparable[] A = {5,6,3,4,1,0,2};
+        Comparable[] A = {0,1,0,0,1,1,1,0,0,1};
         showArray(A);
         sorter.reset();
         System.out.println(sorter.heapsort(A));
         showArray(A);
+        System.out.println();
+        System.out.println("====Simple und Extendedkeys====");
 
+        SimpleKey[] simpleKeys = {new SimpleKey(0,5), new SimpleKey(1,7),
+                new SimpleKey(0,0),new SimpleKey(0,3),new SimpleKey(1,1),
+                new SimpleKey(1,9),new SimpleKey(1,6),new SimpleKey(0,4),
+                new SimpleKey(0,2),new SimpleKey(1,8)};
+        SimpleKey[] simpleKeys1 = simpleKeys.clone();
+        ExtendedKey[] extendedKeys = new ExtendedKey[10];
+
+        Sorter<SimpleKey> simpleKeySorter = new Sorter<>();
+
+        showArray(simpleKeys);
+        System.out.println("Quicksort: "+simpleKeySorter.quicksort(simpleKeys));
+        showArray(simpleKeys);
+        System.out.println();
+        showArray(simpleKeys1);
+        System.out.println("Heapsort: "+simpleKeySorter.heapsort(simpleKeys1));
+        showArray(simpleKeys1);
     }
 
     /**

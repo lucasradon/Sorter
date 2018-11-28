@@ -1,4 +1,4 @@
-class Sorter<T extends Comparable<T>>{
+class Sorter<T extends Comparable<T>> {
     /**
      * Zähler Varibale - Schlüssevergleiche
      */
@@ -11,17 +11,18 @@ class Sorter<T extends Comparable<T>>{
      * @return int Schulüsselvergleiche
      */
     int quicksort(T[] array) {
-       myquick(array,0,array.length);
-       return z;
+        myquick(array, 0, array.length);
+        return z;
     }
 
     /**
      * Eigentliches Quick-Sort nach Script
+     *
      * @param array zu sortierendes Array
-     * @param l Anfangsindex des Teilintervalls
-     * @param r Endindex des Teilintervalls
+     * @param l     Anfangsindex des Teilintervalls
+     * @param r     Endindex des Teilintervalls
      */
-    void myquick(T[] array, int l, int r) {
+    private void myquick(T[] array, int l, int r) {
         //Großschritt 1.Basisfall
         if (r - l <= 1) {
             return;
@@ -59,33 +60,30 @@ class Sorter<T extends Comparable<T>>{
             if (lamdalamda < pivin && pivin < rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh - 1;
-            } else
-            if (lamdalamda == pivin && pivin < rohroh) {
+            } else if (lamdalamda == pivin && pivin < rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh - 1;
-            } else
-            if (lamdalamda < pivin && pivin == rohroh) {
+            } else if (lamdalamda < pivin && pivin == rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh;
-            } else
-            if (lamdalamda == pivin && pivin == rohroh) {
+            } else if (lamdalamda == pivin && pivin == rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
             //Rekursion
             int l1, l2, r1, r2;
-            if ((pivin-l)<(r-pivin)){
-                l1=l;
-                r1=pivin;
-                l2=pivin+1;
-                r2=r;
-            }else{
-                l1=pivin+1;
-                r1=r;
-                l2=l;
-                r2=pivin;
+            if ((pivin - l) < (r - pivin)) {
+                l1 = l;
+                r1 = pivin;
+                l2 = pivin + 1;
+                r2 = r;
+            } else {
+                l1 = pivin + 1;
+                r1 = r;
+                l2 = l;
+                r2 = pivin;
             }
-            myquick(array,l1,r1);
+            myquick(array, l1, r1);
             myquick(array, l2, r2);
 
         }
@@ -93,6 +91,7 @@ class Sorter<T extends Comparable<T>>{
 
     /**
      * Insertion-Sort
+     *
      * @param array zu sortierendes Array
      * @return int-Wert Schlüsselvergleiche
      */
@@ -119,21 +118,22 @@ class Sorter<T extends Comparable<T>>{
      * @return int Schulüsselvergleiche
      */
     int quicksortRandom(T[] array) {
-        myquickrandom(array,0,array.length);
+        myquickrandom(array, 0, array.length);
         return z;
     }
 
     /**
      * Eigentliches randomisertes Quick-Sort nach Script
+     *
      * @param array zu sortierendes Array
-     * @param l Anfangsindex des Teilintervalls
-     * @param r Endindex des Teilintervalls
+     * @param l     Anfangsindex des Teilintervalls
+     * @param r     Endindex des Teilintervalls
      */
-    void myquickrandom(T[] array, int l, int r) {
+    private void myquickrandom(T[] array, int l, int r) {
         if (r - l <= 1) {
             return;
         }
-        int pivin = (int) (l+((r-l)*Math.random()));
+        int pivin = (int) (l + ((r - l) * Math.random()));
         T piv = (T) array[pivin];
         int lamda = l, roh = r - 1;
         int lamdalamda, rohroh;
@@ -164,81 +164,78 @@ class Sorter<T extends Comparable<T>>{
             if (lamdalamda < pivin && pivin < rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh - 1;
-            } else
-            if (lamdalamda == pivin && pivin < rohroh) {
+            } if (lamdalamda == pivin && pivin < rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh - 1;
-            } else
-            if (lamdalamda < pivin && pivin == rohroh) {
+            } if (lamdalamda < pivin && pivin == rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh;
-            } else
-            if (lamdalamda == pivin && pivin == rohroh) {
+            } if (lamdalamda == pivin && pivin == rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
             //Rekursion
             int l1, l2, r1, r2;
-            if ((pivin-l)<(r-pivin)){
-                l1=l;
-                r1=pivin;
-                l2=pivin+1;
-                r2=r;
-            }else{
-                l1=pivin+1;
-                r1=r;
-                l2=l;
-                r2=pivin;
+            if ((pivin - l) < (r - pivin)) {
+                l1 = l;
+                r1 = pivin;
+                l2 = pivin + 1;
+                r2 = r;
+            } else {
+                l1 = pivin + 1;
+                r1 = r;
+                l2 = l;
+                r2 = pivin;
             }
-            myquickrandom(array,l1,r1);
+            myquickrandom(array, l1, r1);
             myquickrandom(array, l2, r2);
 
         }
     }
 
-    int heapsort(Comparable[] A){
+    int heapsort(Comparable[] A) {
         //Großschritt 0
-        if (A.length<=1)
+        if (A.length <= 1)
             return z;
         //Buildheap
-        reheap(A,0,A.length);
+        reheap(A, 0, A.length);
         //Großschritt 2
         int heapsize = A.length;
-        while (heapsize>=2){
+        while (heapsize >= 2) {
             Comparable temp = A[0];
-            A[0] = A[heapsize-1];
-            A[heapsize-1] = temp;
+            A[0] = A[heapsize - 1];
+            A[heapsize - 1] = temp;
             heapsize -= 1;
-            reheap(A,0,heapsize);
+            reheap(A, 0, heapsize);
         }
         return z;
 
     }
 
-    void reheap(Comparable[] A, int from, int to){
+    void reheap(Comparable[] A, int from, int to) {
         //Großschritt 1 Basis
-        if (2*from+1>=to){
+        if (2 * from + 1 >= to) {
             return;
         }
         //1.2 Berechnng des maximalen Sohns
         int maxson;
         z++;
-        if(2*from+1==to-1){
-            maxson = 2*from+1;
-        } else if(A[2*from+1].compareTo(A[2*from+2])>0){
-            maxson = 2*from+1;
+        if (2 * from + 1 == to - 1) {
+            maxson = 2 * from + 1;
+        } else if (A[(2 * from) + 1].compareTo(A[2 * from + 2]) > 0) {
+            maxson = 2 * from + 1;
         } else
-            maxson = 2*from+2;
+            maxson = 2 * from + 2;
         //1.3
         z++;
-        if(A[from].compareTo(A[maxson])>=0){
+        if (A[from].compareTo(A[maxson]) >= 0) {
             return;
         }
         //2. Rekursion
         Comparable temp = A[from];
         A[from] = A[maxson];
         A[maxson] = temp;
-        reheap(A,maxson,to);
+        reheap(A, maxson, to);
     }
 
 
