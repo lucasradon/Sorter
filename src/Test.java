@@ -35,7 +35,7 @@ public class Test {
         Sorter sorter = new Sorter<Integer>();
         System.out.println();
         //---------
-        System.out.println("Quicksort");
+        System.out.println("====Quicksort====");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
         System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quicksort(aufsteigendarray.clone()));
@@ -62,7 +62,7 @@ public class Test {
         System.out.println();
         System.out.println();
         //---------
-        System.out.println("Insertionsort");
+        System.out.println("====Insertionsort====");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
         System.out.println("InsertionsSort Aufsteigend Schlüsselvergleiche: "+sorter.insertionsort(aufsteigendarray));
@@ -85,7 +85,7 @@ public class Test {
         System.out.println();
         System.out.println();
         //-------------
-        System.out.println("QuickSortRandom");
+        System.out.println("====QuickSortRandom=====");
         System.out.println("Aufsteigendes Array");
         showArray(aufsteigendarray);
         System.out.println("QuickSortRandom Aufsteigend Schlüsselvergleiche: "+sorter.quicksortRandom(aufsteigendarray));
@@ -110,7 +110,7 @@ public class Test {
         System.out.println("Durchschnittlich "+zz/100000+" Schlüsselvergleiche");
 
         System.out.println();
-        System.out.println("Generics Test mit Char[] und String[]");
+        System.out.println("====Generics Test mit Char[] und String[]====");
         Sorter<Character> charSorter = new Sorter<Character>();
         String mytest = "acbdxkj";
         Character[] characters = new Character[mytest.length()];
@@ -128,6 +128,13 @@ public class Test {
         showArray(strings);
         System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quicksort(strings));
         showArray(strings);
+        System.out.println();
+        System.out.println("=====Heapsort=====");
+        Comparable[] A = {5,6,3,4,1,0,2};
+        showArray(A);
+        sorter.reset();
+        System.out.println(sorter.heapsort(A));
+        showArray(A);
 
     }
 

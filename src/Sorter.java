@@ -196,6 +196,51 @@ class Sorter<T extends Comparable<T>>{
         }
     }
 
+    int heapsort(Comparable[] A){
+        //Großschritt 0
+        if (A.length<=1)
+            return z;
+        //Buildheap
+        reheap(A,0,A.length);
+        //Großschritt 2
+        int heapsize = A.length;
+        while (heapsize>=2){
+            Comparable temp = A[0];
+            A[0] = A[heapsize-1];
+            A[heapsize-1] = temp;
+            heapsize -= 1;
+            reheap(A,0,heapsize);
+        }
+        return z;
+
+    }
+
+    void reheap(Comparable[] A, int from, int to){
+        //Großschritt 1 Basis
+        if (2*from+1>=to){
+            return;
+        }
+        //1.2 Berechnng des maximalen Sohns
+        int maxson;
+        z++;
+        if(2*from+1==to-1){
+            maxson = 2*from+1;
+        } else if(A[2*from+1].compareTo(A[2*from+2])>0){
+            maxson = 2*from+1;
+        } else
+            maxson = 2*from+2;
+        //1.3
+        z++;
+        if(A[from].compareTo(A[maxson])>=0){
+            return;
+        }
+        //2. Rekursion
+        Comparable temp = A[from];
+        A[from] = A[maxson];
+        A[maxson] = temp;
+        reheap(A,maxson,to);
+    }
+
 
     /**
      * Methode zum Resetten des Zählers
