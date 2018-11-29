@@ -101,13 +101,13 @@ public class Test {
         int zz=0;
         showArray(quickSortRandomArray1);
         Integer test[] = quickSortRandomArray1.clone();
-        for (int i=0; i<100000; i++){
+        for (int i=0; i<10000; i++){
             test = quickSortRandomArray1.clone();
             zz+=sorter.quicksortRandom(test);
             sorter.reset();
         }
         showArray(test);
-        System.out.println("Durchschnittlich "+zz/100000+" Schlüsselvergleiche");
+        System.out.println("Durchschnittlich "+zz/10000+" Schlüsselvergleiche");
 
         System.out.println();
         System.out.println("====Generics Test mit Char[] und String[]====");
@@ -143,7 +143,7 @@ public class Test {
         showArray(B);
         sorter.reset();
         System.out.println();
-        System.out.println("====Simple und Extendedkeys====");
+        System.out.println("====Simplekeys====");
 
         SimpleKey[] simpleKeys = {new SimpleKey(0,5), new SimpleKey(1,7),
                 new SimpleKey(0,0),new SimpleKey(0,3),new SimpleKey(1,1),
@@ -151,7 +151,6 @@ public class Test {
                 new SimpleKey(0,2),new SimpleKey(1,8)};
         SimpleKey[] simpleKeys1 = simpleKeys.clone();
         SimpleKey[] simpleKeys2 = simpleKeys.clone();
-        ExtendedKey[] extendedKeys = new ExtendedKey[10];
 
         Sorter<SimpleKey> simpleKeySorter = new Sorter<>();
 
@@ -165,9 +164,34 @@ public class Test {
         showArray(simpleKeys1);
         System.out.println();
         simpleKeySorter.reset();
-        showArray(simpleKeys1);
-        System.out.println("InsertionSort: "+simpleKeySorter.insertionsort(simpleKeys1));
-        showArray(simpleKeys1);
+        showArray(simpleKeys2);
+        System.out.println("InsertionSort: "+simpleKeySorter.insertionsort(simpleKeys2));
+        showArray(simpleKeys2);
+        System.out.println();
+        System.out.println("====ExtendedKeys====");
+
+        ExtendedKey[] extendedKeys = {new ExtendedKey(0,5), new ExtendedKey(1,7),
+                new ExtendedKey(0,0),new ExtendedKey(0,3),new ExtendedKey(1,1),
+                new ExtendedKey(1,9),new ExtendedKey(1,6),new ExtendedKey(0,4),
+                new ExtendedKey(0,2),new ExtendedKey(1,8)};
+        ExtendedKey[] extendedKeys1 = extendedKeys.clone();
+        ExtendedKey[] extendedKeys2 = extendedKeys.clone();
+
+
+        Sorter<ExtendedKey> extendedKeySorter = new Sorter<>();
+        showArray(extendedKeys);
+        System.out.println("Quicksort Schlüsselvergleiche: "+extendedKeySorter.quicksort(extendedKeys));
+        showArray(extendedKeys);
+        System.out.println();
+        extendedKeySorter.reset();
+        showArray(extendedKeys1);
+        System.out.println("Heapsort Schlüsselvergleiche: "+extendedKeySorter.heapsort(extendedKeys1));
+        showArray(extendedKeys1);
+        System.out.println();
+        extendedKeySorter.reset();
+        showArray(extendedKeys2);
+        System.out.println("InsertionSort Schlüsselvergleiche: "+extendedKeySorter.insertionsort(extendedKeys2));
+        showArray(extendedKeys2);
     }
 
     /**

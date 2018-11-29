@@ -1,4 +1,4 @@
-public class ExtendedKey implements Comparable{
+public class ExtendedKey implements Comparable<ExtendedKey>{
     public Integer  key, pos;
 
     public ExtendedKey(Integer key, Integer pos){
@@ -7,10 +7,6 @@ public class ExtendedKey implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
     public int compareTo(ExtendedKey key){
         if(this.key > key.key)
             return 1;
