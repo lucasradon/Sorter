@@ -23,11 +23,13 @@ public class Test {
         Integer quickSortArray1[] = randomArray.clone();
         Integer quickSortArray2[] = randomArray.clone();
         Permutation.fisher_yates_shuffle(quickSortArray2);
+        Integer HeapsortArray[] = randomArray.clone();
         Integer insertionSortArray0[] = absteigendArray.clone();
         Integer insertionSortArray1[] = randomArray.clone();
         Integer insertionSortArray2[] = quickSortArray2.clone();
         Integer quickSortRandomArray0[] = absteigendArray.clone();
         Integer quickSortRandomArray1[] = Permutation.fisher_yates_shuffle(randomArray);
+
 
 
         Sorter<Integer> sorter = new Sorter<Integer>();
@@ -48,13 +50,13 @@ public class Test {
         System.out.println();
         System.out.println("Random 1");
         showArray(quickSortArray1);
-        System.out.println("Quicksort Random 1 Schlüsselvergleiche: "+sorter.quicksortNachScript(quickSortArray1));
+        System.out.println("Quicksort Random 1 Schlüsselvergleiche: "+sorter.quickSort(quickSortArray1));
         showArray(quickSortArray1);
         sorter.reset();
         System.out.println();
         System.out.println("Random 2");
         showArray(quickSortArray2);
-        System.out.println("Quicksort Random 2 Schlüsselvergleiche: "+sorter.quicksortNachScript(quickSortArray2));
+        System.out.println("Quicksort Random 2 Schlüsselvergleiche: "+sorter.quickSort(quickSortArray2));
         showArray(quickSortArray2);
         sorter.reset();
         System.out.println();
@@ -117,68 +119,69 @@ public class Test {
             characters[i]= charaarray[i];
         }
         showArray(characters);
-        System.out.println("Character[] Quicksort Schlüsselvergleiche: "+charSorter.quicksortNachScript(characters));
+        System.out.println("Character[] Quicksort Schlüsselvergleiche: "+charSorter.quickSort(characters));
         showArray(characters);
 
         System.out.println();
         Sorter<String> stringSorter = new Sorter<String>();
         String[] strings = {"Hi","abcd","a","xzsk","b","c"};
         showArray(strings);
-        System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quicksortNachScript(strings));
+        System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quickSort(strings));
         showArray(strings);
         System.out.println();
         System.out.println("=====Heapsort=====");
-        Integer[] A = {0,1,0,0,1,1,1,0,0,1};
-        Integer[] B = A.clone();
-        showArray(A);
+        showArray(HeapsortArray);
         sorter.reset();
-        System.out.println("Heapsort: "+sorter.heapsort(A));
-        showArray(A);
+        System.out.println("Heapsort: "+sorter.heapsort(HeapsortArray));
+        showArray(HeapsortArray);
         System.out.println();
-        showArray(B);
         sorter.reset();
-        System.out.println("Quciksort: "+sorter.quicksortNachScript(B));
-        showArray(B);
-        sorter.reset();
-        System.out.println();
         System.out.println("====Simplekeys====");
 
-        SimpleKey[] simpleKeys = {new SimpleKey(0,5), new SimpleKey(1,7),
-                new SimpleKey(0,0),new SimpleKey(0,3),new SimpleKey(1,1),
-                new SimpleKey(1,9),new SimpleKey(1,6),new SimpleKey(0,4),
-                new SimpleKey(0,2),new SimpleKey(1,8)};
+        Integer[] A = {0,1,2,3,4,5,6,7,8,9};
+        Integer[] B = {0,0,0,0,0,1,1,1,1,1};
+        A = Permutation.fisher_yates_shuffle(A);
+        B = Permutation.fisher_yates_shuffle(B);
+
+        //SimpleKeys Initialisieren
+        SimpleKey[] simpleKeys = new SimpleKey[10];
+        ExtendedKey[] extendedKeys = new ExtendedKey[10];
+
+        for (int i=0; i<simpleKeys.length; i++){
+            simpleKeys[i] = new SimpleKey(B[i],A[i]);
+            extendedKeys[i] = new ExtendedKey(B[i],A[i]);
+        }
+
         SimpleKey[] simpleKeys1 = simpleKeys.clone();
         SimpleKey[] simpleKeys2 = simpleKeys.clone();
 
         Sorter<SimpleKey> simpleKeySorter = new Sorter<>();
 
         showArray(simpleKeys);
-        System.out.println("Quicksort: "+simpleKeySorter.quicksortNachScript(simpleKeys));
+        System.out.println("Quicksort Schlüsselvergleiche: "+simpleKeySorter.quickSort(simpleKeys));
         showArray(simpleKeys);
         System.out.println();
         simpleKeySorter.reset();
         showArray(simpleKeys1);
-        System.out.println("Heapsort: "+simpleKeySorter.heapsort(simpleKeys1));
+        System.out.println("Heapsort Schlüsselvergleiche: "+simpleKeySorter.heapsort(simpleKeys1));
         showArray(simpleKeys1);
         System.out.println();
         simpleKeySorter.reset();
         showArray(simpleKeys2);
-        System.out.println("InsertionSort: "+simpleKeySorter.insertionsort(simpleKeys2));
+        System.out.println("InsertionSort Schlüsselvergleiche: "+simpleKeySorter.insertionsort(simpleKeys2));
         showArray(simpleKeys2);
         System.out.println();
         System.out.println("====ExtendedKeys====");
 
-        ExtendedKey[] extendedKeys = {new ExtendedKey(0,5), new ExtendedKey(1,7),
-                new ExtendedKey(0,0),new ExtendedKey(0,3),new ExtendedKey(1,1),
-                new ExtendedKey(1,9),new ExtendedKey(1,6),new ExtendedKey(0,4),
-                new ExtendedKey(0,2),new ExtendedKey(1,8)};
+        //ExtendedKeys Initialisieren
+
         ExtendedKey[] extendedKeys1 = extendedKeys.clone();
         ExtendedKey[] extendedKeys2 = extendedKeys.clone();
 
 
         Sorter<ExtendedKey> extendedKeySorter = new Sorter<>();
         showArray(extendedKeys);
-        System.out.println("Quicksort Schlüsselvergleiche: "+extendedKeySorter.quicksortNachScript(extendedKeys));
+        System.out.println("Quicksort Schlüsselvergleiche: "+extendedKeySorter.quickSort(extendedKeys));
         showArray(extendedKeys);
         System.out.println();
         extendedKeySorter.reset();
@@ -190,6 +193,9 @@ public class Test {
         showArray(extendedKeys2);
         System.out.println("InsertionSort Schlüsselvergleiche: "+extendedKeySorter.insertionsort(extendedKeys2));
         showArray(extendedKeys2);
+        System.out.println();
+        System.out.println("Man sieht, dass die Extendedkey eine höhere Anzahl an Schlüsselvergleiche brauchen um richtig Sortiert zu werden, da im Falle eines gleichen Keys, nochmal nach Position sortiert wird." +
+                "Nach mehreren Durchgänge sieht man, dass es sehr unterschiedlich ist, welcher der schnellste ist, je nach dem wie Sortiert wird.");
     }
 
     /**

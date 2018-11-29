@@ -10,7 +10,7 @@ class Sorter<T extends Comparable<T>> {
      * @param array zu sortierendes Array
      * @return int Schulüsselvergleiche
      */
-    int quicksortNachScript(T[] array) {
+    int quickSort(T[] array) {
         myquick(array, 0, array.length);
         return z;
     }
@@ -77,23 +77,23 @@ class Sorter<T extends Comparable<T>> {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
-            //Rekursion
-            int l1, l2, r1, r2;
-            if ((pivin - l) < (r - pivin)) {
-                l1 = l;
-                r1 = pivin;
-                l2 = pivin + 1;
-                r2 = r;
-            } else {
-                l1 = pivin + 1;
-                r1 = r;
-                l2 = l;
-                r2 = pivin;
-            }
-            myquick(array, l1, r1);
-            myquick(array, l2, r2);
-
         }
+        //Rekursion
+        int l1, l2, r1, r2;
+        if ((pivin - l) < (r - pivin)) {
+            l1 = l;
+            r1 = pivin;
+            l2 = pivin + 1;
+            r2 = r;
+        } else {
+            l1 = pivin + 1;
+            r1 = r;
+            l2 = l;
+            r2 = pivin;
+        }
+        myquick(array, l1, r1);
+        myquick(array, l2, r2);
+
     }
 
     /**
@@ -184,23 +184,23 @@ class Sorter<T extends Comparable<T>> {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
-            //Rekursion
-            int l1, l2, r1, r2;
-            if ((pivin - l) < (r - pivin)) {
-                l1 = l;
-                r1 = pivin;
-                l2 = pivin + 1;
-                r2 = r;
-            } else {
-                l1 = pivin + 1;
-                r1 = r;
-                l2 = l;
-                r2 = pivin;
-            }
-            myquickrandom(array, l1, r1);
-            myquickrandom(array, l2, r2);
-
         }
+        //Rekursion
+        int l1, l2, r1, r2;
+        if ((pivin - l) < (r - pivin)) {
+            l1 = l;
+            r1 = pivin;
+            l2 = pivin + 1;
+            r2 = r;
+        } else {
+            l1 = pivin + 1;
+            r1 = r;
+            l2 = l;
+            r2 = pivin;
+        }
+        myquickrandom(array, l1, r1);
+        myquickrandom(array, l2, r2);
+
     }
 
     /**
@@ -234,9 +234,9 @@ class Sorter<T extends Comparable<T>> {
     /**
      * Heap wieder aufbauen
      *
-     * @param A
-     * @param from
-     * @param to
+     * @param A zu sortierendes Array
+     * @param from int Wert von
+     * @param to int Wert bis
      */
     void reheap(Comparable[] A, int from, int to) {
         //Großschritt 1 Basis
@@ -265,47 +265,6 @@ class Sorter<T extends Comparable<T>> {
         A[maxson] = temp;
         reheap(A, maxson, to);
     }
-
-    int quickSort(Comparable[] A) {
-        myquickSort(A, 0, A.length - 1);
-        return z;
-    }
-
-    void myquickSort(Comparable[] L, int anfang, int ende) {
-        if (L.length < 1)
-            return;
-        Comparable pivot = L[(anfang+ende)/2];
-        int links = anfang;
-        int rechts = ende;
-        while (links <= rechts) {
-            z++;
-            while (L[links].compareTo(pivot) < 0) {
-                z++;
-                links = links + 1;
-            }
-            z++;
-            while (L[rechts].compareTo(pivot) > 0) {
-                rechts = rechts - 1;
-                z++;
-            }
-            if (links <= rechts) {
-                if (links < rechts) {
-                    Comparable h = L[links];
-                    L[links] = L[rechts];
-                    L[rechts] = h;
-                }
-                links = links + 1;
-                rechts = rechts - 1;
-                if (rechts < anfang)
-                    rechts = anfang;
-            }
-        }
-        if (anfang < rechts)
-            myquickSort(L, anfang, rechts);
-        if (links < ende)
-            myquickSort(L, links, ende);
-    }
-
 
     /**
      * Methode zum Resetten des Zählers

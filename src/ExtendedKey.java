@@ -23,6 +23,6 @@ public class ExtendedKey implements Comparable<ExtendedKey>{
 
     @Override
     public String toString() {
-        return "Pos: "+pos+" Key: "+key;
+        return "Key: "+key+ " Pos: "+pos+" | ";
     }
 }
