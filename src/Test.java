@@ -1,5 +1,3 @@
-import javafx.scene.Scene;
-
 public class Test {
     public static void main(String[] args) {
         int n = 0;
@@ -38,25 +36,25 @@ public class Test {
         System.out.println("====Quicksort====");
         System.out.println("Aufsteigenedes Array");
         showArray(aufsteigendarray);
-        //System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quicksort(aufsteigendarray.clone()));
+        System.out.println("Quicksort Aufsteigend Schlüsselvergleiche: "+sorter.quickSort(aufsteigendarray.clone()));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortArray0);
-        System.out.println("Quicksort Absteigend Schlüsselvergleiche: "+sorter.quicksort(quickSortArray0));
+        System.out.println("Quicksort Absteigend Schlüsselvergleiche: "+sorter.quickSort(quickSortArray0));
         showArray(quickSortArray0);
         sorter.reset();
         System.out.println();
         System.out.println("Random 1");
         showArray(quickSortArray1);
-        System.out.println("Quicksort Random 1 Schlüsselvergleiche: "+sorter.quicksort(quickSortArray1));
+        System.out.println("Quicksort Random 1 Schlüsselvergleiche: "+sorter.quicksortNachScript(quickSortArray1));
         showArray(quickSortArray1);
         sorter.reset();
         System.out.println();
         System.out.println("Random 2");
         showArray(quickSortArray2);
-        System.out.println("Quicksort Random 2 Schlüsselvergleiche: "+sorter.quicksort(quickSortArray2));
+        System.out.println("Quicksort Random 2 Schlüsselvergleiche: "+sorter.quicksortNachScript(quickSortArray2));
         showArray(quickSortArray2);
         sorter.reset();
         System.out.println();
@@ -88,13 +86,13 @@ public class Test {
         System.out.println("====QuickSortRandom=====");
         System.out.println("Aufsteigendes Array");
         showArray(aufsteigendarray);
-        System.out.println("QuickSortRandom Aufsteigend Schlüsselvergleiche: "+sorter.quicksortRandom(aufsteigendarray));
+        System.out.println("QuickSortRandom Aufsteigend Schlüsselvergleiche: "+sorter.quicksortRandomNachScript(aufsteigendarray));
         showArray(aufsteigendarray);
         sorter.reset();
         System.out.println();
         System.out.println("Absteigendes Array");
         showArray(quickSortRandomArray0);
-        System.out.println("QuickSortRandom Absteigend Schlüsselvergleiche: "+sorter.quicksortRandom(quickSortRandomArray0));
+        System.out.println("QuickSortRandom Absteigend Schlüsselvergleiche: "+sorter.quicksortRandomNachScript(quickSortRandomArray0));
         showArray(quickSortRandomArray0);
         System.out.println();
         System.out.println("Random");
@@ -103,7 +101,7 @@ public class Test {
         Integer test[] = quickSortRandomArray1.clone();
         for (int i=0; i<10000; i++){
             test = quickSortRandomArray1.clone();
-            zz+=sorter.quicksortRandom(test);
+            zz+=sorter.quicksortRandomNachScript(test);
             sorter.reset();
         }
         showArray(test);
@@ -119,14 +117,14 @@ public class Test {
             characters[i]= charaarray[i];
         }
         showArray(characters);
-        System.out.println("Character[] Quicksort Schlüsselvergleiche: "+charSorter.quicksort(characters));
+        System.out.println("Character[] Quicksort Schlüsselvergleiche: "+charSorter.quicksortNachScript(characters));
         showArray(characters);
 
         System.out.println();
         Sorter<String> stringSorter = new Sorter<String>();
         String[] strings = {"Hi","abcd","a","xzsk","b","c"};
         showArray(strings);
-        System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quicksort(strings));
+        System.out.println("String[] Quicksort Schlüsselvergleiche: "+stringSorter.quicksortNachScript(strings));
         showArray(strings);
         System.out.println();
         System.out.println("=====Heapsort=====");
@@ -139,7 +137,7 @@ public class Test {
         System.out.println();
         showArray(B);
         sorter.reset();
-        System.out.println("Quciksort: "+sorter.quicksort(B));
+        System.out.println("Quciksort: "+sorter.quicksortNachScript(B));
         showArray(B);
         sorter.reset();
         System.out.println();
@@ -155,7 +153,7 @@ public class Test {
         Sorter<SimpleKey> simpleKeySorter = new Sorter<>();
 
         showArray(simpleKeys);
-        System.out.println("Quicksort: "+simpleKeySorter.quicksort(simpleKeys));
+        System.out.println("Quicksort: "+simpleKeySorter.quicksortNachScript(simpleKeys));
         showArray(simpleKeys);
         System.out.println();
         simpleKeySorter.reset();
@@ -180,7 +178,7 @@ public class Test {
 
         Sorter<ExtendedKey> extendedKeySorter = new Sorter<>();
         showArray(extendedKeys);
-        System.out.println("Quicksort Schlüsselvergleiche: "+extendedKeySorter.quicksort(extendedKeys));
+        System.out.println("Quicksort Schlüsselvergleiche: "+extendedKeySorter.quicksortNachScript(extendedKeys));
         showArray(extendedKeys);
         System.out.println();
         extendedKeySorter.reset();

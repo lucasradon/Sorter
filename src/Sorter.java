@@ -10,7 +10,7 @@ class Sorter<T extends Comparable<T>> {
      * @param array zu sortierendes Array
      * @return int Schulüsselvergleiche
      */
-    int quicksort(T[] array) {
+    int quicksortNachScript(T[] array) {
         myquick(array, 0, array.length);
         return z;
     }
@@ -34,18 +34,18 @@ class Sorter<T extends Comparable<T>> {
         int lamda = l, roh = r - 1;
         int lamdalamda, rohroh;
 
-        while (roh - lamda !=0) {
+        while (roh - lamda != 0) {
             int i = lamda;
             int j = roh;
 
             z++;
-            while (array[i].compareTo(piv) < 0){
+            while (array[i].compareTo(piv) < 0) {
                 z++;
                 i++;
             }
 
             z++;
-            while (array[j].compareTo(piv) > 0){
+            while (array[j].compareTo(piv) > 0) {
                 z++;
                 j--;
             }
@@ -124,7 +124,7 @@ class Sorter<T extends Comparable<T>> {
      * @param array zu sortierendes Array
      * @return int Schulüsselvergleiche
      */
-    int quicksortRandom(T[] array) {
+    int quicksortRandomNachScript(T[] array) {
         myquickrandom(array, 0, array.length);
         return z;
     }
@@ -171,13 +171,16 @@ class Sorter<T extends Comparable<T>> {
             if (lamdalamda < pivin && pivin < rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh - 1;
-            } if (lamdalamda == pivin && pivin < rohroh) {
+            }
+            if (lamdalamda == pivin && pivin < rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh - 1;
-            } if (lamdalamda < pivin && pivin == rohroh) {
+            }
+            if (lamdalamda < pivin && pivin == rohroh) {
                 lamda = lamdalamda + 1;
                 roh = rohroh;
-            } if (lamdalamda == pivin && pivin == rohroh) {
+            }
+            if (lamdalamda == pivin && pivin == rohroh) {
                 lamda = lamdalamda;
                 roh = rohroh;
             }
@@ -200,13 +203,19 @@ class Sorter<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * Methode zum Sortieren eines Arrays mit Heapsort
+     *
+     * @param A zu sortierendes Array
+     * @return int Schlüsselvergleiche
+     */
     int heapsort(Comparable[] A) {
         //Großschritt 0
         if (A.length <= 1)
             return z;
         //Buildheap
         int n = A.length;
-        for (int j=(n/2)-1; j>=0; j--){
+        for (int j = (n / 2) - 1; j >= 0; j--) {
             reheap(A, j, n);
         }
         //Großschritt 2
@@ -222,6 +231,13 @@ class Sorter<T extends Comparable<T>> {
 
     }
 
+    /**
+     * Heap wieder aufbauen
+     *
+     * @param A
+     * @param from
+     * @param to
+     */
     void reheap(Comparable[] A, int from, int to) {
         //Großschritt 1 Basis
         if (2 * from + 1 >= to) {
@@ -248,6 +264,46 @@ class Sorter<T extends Comparable<T>> {
         A[from] = A[maxson];
         A[maxson] = temp;
         reheap(A, maxson, to);
+    }
+
+    int quickSort(Comparable[] A) {
+        myquickSort(A, 0, A.length - 1);
+        return z;
+    }
+
+    void myquickSort(Comparable[] L, int anfang, int ende) {
+        if (L.length < 1)
+            return;
+        Comparable pivot = L[(anfang+ende)/2];
+        int links = anfang;
+        int rechts = ende;
+        while (links <= rechts) {
+            z++;
+            while (L[links].compareTo(pivot) < 0) {
+                z++;
+                links = links + 1;
+            }
+            z++;
+            while (L[rechts].compareTo(pivot) > 0) {
+                rechts = rechts - 1;
+                z++;
+            }
+            if (links <= rechts) {
+                if (links < rechts) {
+                    Comparable h = L[links];
+                    L[links] = L[rechts];
+                    L[rechts] = h;
+                }
+                links = links + 1;
+                rechts = rechts - 1;
+                if (rechts < anfang)
+                    rechts = anfang;
+            }
+        }
+        if (anfang < rechts)
+            myquickSort(L, anfang, rechts);
+        if (links < ende)
+            myquickSort(L, links, ende);
     }
 
 
