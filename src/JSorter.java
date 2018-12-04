@@ -10,19 +10,12 @@ public class JSorter {
      * @param array zu sortierendes Array
      * @return int Schulüsselvergleiche
      */
-    int quickSort(Comparable[] array) {
-        myquick(array, 0, array.length);
+    int quickSort(Comparable[] array, int j) {
+        myquick(array, 0, array.length, j);
+        System.out.println(array[j]);
         return z;
     }
-
-    /**
-     * Eigentliches Quick-Sort nach Script
-     *
-     * @param array zu sortierendes Array
-     * @param l     Anfangsindex des Teilintervalls
-     * @param r     Endindex des Teilintervalls
-     */
-    private void myquick(Comparable[] array, int l, int r) {
+    private void myquick(Comparable[] array, int l, int r, int k) {
         //Großschritt 1.Basisfall
         if (r - l <= 1) {
             return;
@@ -78,21 +71,27 @@ public class JSorter {
                 roh = rohroh;
             }
         }
-        //Rekursion
-        int l1, l2, r1, r2;
-        if ((pivin - l) < (r - pivin)) {
+
+        int l1, r1;
+        if (pivin == k)
+            return;
+        else if (k<pivin){
             l1 = l;
             r1 = pivin;
-            l2 = pivin + 1;
-            r2 = r;
         } else {
             l1 = pivin + 1;
             r1 = r;
-            l2 = l;
-            r2 = pivin;
         }
-        myquick(array, l1, r1);
-        myquick(array, l2, r2);
+        //Rekursion
 
+        myquick(array, l1, r1,k);
+
+    }
+
+    private static void showArray(Comparable[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }
